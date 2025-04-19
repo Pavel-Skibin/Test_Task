@@ -1,0 +1,41 @@
+package com.nahap.HolidayPayTool.controller;
+
+
+import com.nahap.HolidayPayTool.dto.VacationPayRequest;
+import com.nahap.HolidayPayTool.dto.VacationPayResponse;
+import com.nahap.HolidayPayTool.service.VacationPayService;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class VacationPayController {
+
+    private final VacationPayService vacationPayService;
+
+    @Autowired
+    public VacationPayController(VacationPayService vacationPayService) {
+        this.vacationPayService = vacationPayService;
+    }
+
+
+    @GetMapping("/calculate")
+    public ResponseEntity<VacationPayResponse> calculateVacationPay(
+            @RequestParam @NotNull @Min(0) Double averageSalary,
+            @RequestParam @NotNull @Min(1) Integer vacationDays){
+
+        VacationPayRequest request = new VacationPayRequest();
+        request.setAverageSalary(averageSalary);
+        request.setVacationDays(vacationDays);
+
+        VacationPayResponse response = vacationPayService.calculateVacationPay(request);
+
+        return ResponseEntity.ok(response);
+
+    }
+
+}
