@@ -3,7 +3,7 @@ package com.nahap.HolidayPayTool.service;
 
 import com.nahap.HolidayPayTool.dto.VacationPayRequest;
 import com.nahap.HolidayPayTool.dto.VacationPayResponse;
-import jakarta.validation.ValidationException;
+import javax.validation.ValidationException;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;

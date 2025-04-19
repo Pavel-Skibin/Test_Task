@@ -2,7 +2,7 @@ package com.nahap.HolidayPayTool.service;
 
 import com.nahap.HolidayPayTool.dto.DateVacationPayRequest;
 import com.nahap.HolidayPayTool.dto.DateVacationPayResponse;
-import jakarta.validation.ValidationException;
+import javax.validation.ValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
